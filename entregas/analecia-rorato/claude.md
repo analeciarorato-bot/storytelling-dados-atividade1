@@ -31,7 +31,7 @@ Usei essas duas bases extras porque a base principal só tem os eleitos. Sem as 
 Parlamentares, assessorias técnicas e representantes da sociedade civil, em uma audiência pública. São pessoas com pouco tempo e opiniões já formadas, que precisam sair da sessão com uma leitura clara e bem fundamentada.
 
 O que isso implica para o dashboard:
-- **Opiniões já formadas:** uma tese crítica só convence se for à prova de contestação. Por isso o ponto de vista é declarado logo no início, cada número traz o absoluto e a fonte, e os dados contrários à tese também aparecem (as candidatas vencem um pouco menos, sobretudo no Sul e no Sudeste).
+- **Opiniões já formadas:** uma tese crítica só convence se for à prova de contestação. Por isso cada número traz o absoluto e a fonte, e os dados contrários à tese também aparecem (as candidatas vencem um pouco menos, sobretudo no Sul e no Sudeste).
 - **Pouco tempo:** os títulos das seções contam sozinhos a história, em ordem.
 - **Audiência pública:** o fechamento traz perguntas para o debate, não ataques a pessoas ou grupos.
 
@@ -49,13 +49,13 @@ O que isso implica para o dashboard:
 
 Sigo a skill `dashboard-narrativo-para-decisores` (`skill.md`).
 
-- **Título-tese:** "Não é o eleitor: 94% da distância surge antes da urna". O título é a conclusão principal e é verificável pelo funil.
-- **Caixa "ponto de vista declarado":** o viés é assumido com transparência, em vez de disfarçado de neutralidade. Isso dá credibilidade à tese diante de um público dividido.
+- **Título-pergunta:** "Onde estão as candidatas? Em 2 de cada 3 municípios, nenhuma mulher disputou a prefeitura". O título provoca a audiência e já entrega o achado principal, que é verificável. A tese dos 94% vem logo em seguida, no funil.
+- **Ponto de vista no texto, sem caixa de aviso:** a leitura conservadora aparece na abertura e nos cartões finais, sempre ancorada em números. Tirei a caixa "ponto de vista declarado" para o painel não abrir com um aviso e ir direto aos dados.
 - **Funil em barras (eleitorado → candidaturas → eleitas):** escala de 0 a 100%, com a linha da paridade (50%) e a queda em pontos indicada em cada etapa. É o gráfico que prova a tese central.
 - **Grade de 100 quadradinhos para os municípios sem candidata:** "65 de cada 100" é concreto e memorável.
 - **Halteres para a taxa de sucesso por região:** mostram ao mesmo tempo onde a diferença quase some (Nordeste) e onde ela existe (Sul e Sudeste). Não escondo o dado desfavorável à tese.
 - **Barra empilhada por bloco partidário, com cores convencionais da política:** direita em azul, centro em cinza e esquerda em vermelho. Em seguida, barras com o recorte do Nordeste.
-- **Cores de gênero:** mulheres em laranja (destaque) e homens em cinza, iguais em todo o painel. Evitei rosa e azul.
+- **Cores de gênero:** mulheres em rosa claro e homens em azul claro, as cores tradicionais, de leitura imediata para o público. São iguais em todo o painel. Os textos de destaque usam um rosa mais escuro para manter a legibilidade, e as barras "abaixo da média" ficam em cinza para não serem confundidas com "homens".
 - **Escala fixa de 0 a 50% (paridade) nos gráficos de percentual:** deixa as comparações honestas e consistentes.
 - **Cinco cartões finais "O que estes dados dizem ao discurso feminista":** quatro críticas ancoradas em números e uma ressalva honesta (Sul e Sudeste).
 - **O que ficou de fora:** o mapa (distorce pela área dos estados), os nomes de pessoas e a correlação entre a proporção de eleitoras e o número de prefeitas (a variação entre municípios é pequena e a inferência seria frágil).

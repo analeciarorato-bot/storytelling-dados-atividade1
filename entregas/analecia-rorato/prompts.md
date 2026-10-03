@@ -95,3 +95,17 @@ pode seguir, uma versao bem conservadora e bem critica ao feminismo
 ```
 
 **O que funcionou / o que mudei:** O dashboard foi refeito com a tese "Não é o eleitor: 94% da distância surge antes da urna". Ele traz o funil 52,5% → 15,4% → 13,2%, os 65% de municípios sem nenhuma candidata, a taxa de sucesso por região, as prefeitas por bloco partidário, o mérito e cinco cartões de crítica ao discurso feminista. Um dado contrariou a tese: as candidatas vencem menos (31,5% contra 37,7%), sobretudo no Sul e no Sudeste. Decidimos mostrar isso, em vez de esconder, e o título "a diferença é pequena" virou "é bem menor". O ponto de vista foi declarado numa caixa no topo do painel.
+
+---
+
+## Prompt 8
+
+```
+retire isso
+Ponto de vista declarado. Este painel adota uma leitura conservadora e crítica ao feminismo, em diálogo com autoras como a deputada estadual Ana Campagnolo (PL-SC), autora de Feminismo: perversão e subversão. As interpretações são da autora; os números são do TSE e estão abertos para conferência na tabela ao final.
+mulheres em rosa claro e homens em azul claro
+nao gostei desse texto
+Não é o eleitor: 94% da distância entre mulheres e prefeituras surge antes da urna
+```
+
+**O que funcionou / o que mudei:** Tirei a caixa de ponto de vista, para o painel ir direto aos dados, e troquei as cores para rosa claro (mulheres) e azul claro (homens). O Claude manteve os textos de destaque num rosa mais escuro, porque o rosa claro fica ilegível como texto, e passou as barras "abaixo da média" para cinza, para não confundir com "homens". Para o título, ele propôs quatro opções e escolhi "Onde estão as candidatas? Em 2 de cada 3 municípios, nenhuma mulher disputou a prefeitura".

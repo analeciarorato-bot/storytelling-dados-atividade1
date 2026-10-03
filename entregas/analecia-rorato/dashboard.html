@@ -14,8 +14,10 @@
     --texto-3: #74726c;
     --borda: #e3e1da;
     --grade: #ebe9e3;
-    --mulher: #eb6834;
-    --homem: #a8a6a0;
+    --mulher: #f4a6c4;
+    --homem: #9fcaf0;
+    --neutro: #c9c7c0;
+    --acento: #b3306a;
     --ref: #52514e;
     --sombra: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
   }
@@ -23,14 +25,14 @@
     :root:not([data-theme="light"]) {
       color-scheme: dark;
       --fundo: #121211; --superficie: #1a1a19; --texto: #ffffff; --texto-2: #c3c2b7; --texto-3: #9a998f;
-      --borda: #2e2e2b; --grade: #262624; --mulher: #d95926; --homem: #6b6a66; --ref: #c3c2b7;
+      --borda: #2e2e2b; --grade: #262624; --mulher: #e88fb3; --homem: #6fa8dc; --neutro: #5a5954; --acento: #f2a7c6; --ref: #c3c2b7;
       --sombra: none;
     }
   }
   :root[data-theme="dark"] {
     color-scheme: dark;
     --fundo: #121211; --superficie: #1a1a19; --texto: #ffffff; --texto-2: #c3c2b7; --texto-3: #9a998f;
-    --borda: #2e2e2b; --grade: #262624; --mulher: #d95926; --homem: #6b6a66; --ref: #c3c2b7;
+    --borda: #2e2e2b; --grade: #262624; --mulher: #e88fb3; --homem: #6fa8dc; --neutro: #5a5954; --acento: #f2a7c6; --ref: #c3c2b7;
     --sombra: none;
   }
   * { box-sizing: border-box; }
@@ -39,10 +41,10 @@
   main { max-width: 1000px; margin: 0 auto; padding: 40px 16px 64px; }
   .kicker { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-2); margin: 0; }
   h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; margin: 8px 0 12px; letter-spacing: -.01em; }
-  h1 em { font-style: normal; color: var(--mulher); }
+  h1 em { font-style: normal; color: var(--acento); }
   .lead { font-size: 18px; color: var(--texto-2); max-width: 760px; margin: 0; }
   h2 { font-size: clamp(20px, 3vw, 24px); line-height: 1.3; margin: 0 0 6px; }
-  .num-sec { display: inline-block; font-size: 13px; font-weight: 700; color: var(--mulher); margin-bottom: 4px; }
+  .num-sec { display: inline-block; font-size: 13px; font-weight: 700; color: var(--acento); margin-bottom: 4px; }
   section { background: var(--superficie); border: 1px solid var(--borda); border-radius: 14px; padding: 24px; margin-top: 20px; box-shadow: var(--sombra); }
   .sub { color: var(--texto-2); margin: 0 0 18px; }
   .nota { font-size: 14px; color: var(--texto-3); margin: 14px 0 0; }
@@ -51,9 +53,9 @@
   /* Abertura */
   .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; }
   .waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 340px; width: 100%; }
-  .waffle span { aspect-ratio: 1; border-radius: 3px; background: var(--homem); opacity: .55; }
+  .waffle span { aspect-ratio: 1; border-radius: 3px; background: var(--homem); }
   .waffle span.m { background: var(--mulher); opacity: 1; }
-  .grande { font-size: clamp(48px, 9vw, 76px); font-weight: 750; line-height: 1; color: var(--mulher); letter-spacing: -.02em; }
+  .grande { font-size: clamp(48px, 9vw, 76px); font-weight: 750; line-height: 1; color: var(--acento); letter-spacing: -.02em; }
   .grande-legenda { font-size: 18px; margin: 6px 0 18px; }
   .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .tile { border: 1px solid var(--borda); border-radius: 10px; padding: 12px; }
@@ -69,7 +71,7 @@
   .linha:hover, .linha:focus { background: var(--grade); outline: none; }
   .linha .rot { font-size: 14px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .linha .trilho { position: relative; height: 18px; }
-  .linha .barra { position: absolute; left: 0; top: 0; bottom: 0; background: var(--homem); border-radius: 0 4px 4px 0; min-width: 2px; }
+  .linha .barra { position: absolute; left: 0; top: 0; bottom: 0; background: var(--neutro); border-radius: 0 4px 4px 0; min-width: 2px; }
   .linha.dest .barra { background: var(--mulher); }
   .linha .val { font-size: 14px; font-variant-numeric: tabular-nums; color: var(--texto-2); white-space: nowrap; }
   .linha.dest .val { color: var(--texto); font-weight: 650; }
@@ -151,7 +153,7 @@
   }
   @media (max-width: 440px) { .pilha-leg, .cards, .comparar { grid-template-columns: 1fr; } }
 
-  :root { --dir: #2a78d6; --centro: #8a8880; --esq: #e34948; }
+  :root { --dir: #1c5cab; --centro: #8a8880; --esq: #c93a3a; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dir: #3987e5; --centro: #7d7b75; --esq: #e66767; } }
   :root[data-theme="dark"] { --dir: #3987e5; --centro: #7d7b75; --esq: #e66767; }
   .pov { margin-top: 18px; border: 1px solid var(--borda); border-left: 4px solid var(--dir); background: var(--superficie); border-radius: 10px; padding: 12px 16px; font-size: 15px; color: var(--texto-2); }
@@ -165,14 +167,14 @@
   .funil .f-barra b { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .funil .f-par { position: absolute; left: 50%; top: -4px; bottom: -4px; border-left: 2px dashed var(--ref); opacity: .6; }
   .funil .f-queda { font-size: 14px; color: var(--texto-2); }
-  .funil .f-queda b { color: var(--mulher); }
+  .funil .f-queda b { color: var(--acento); }
   .f-eixo { display: grid; grid-template-columns: 120px minmax(0, 1fr) 190px; gap: 12px; margin-top: 4px; }
   .f-eixo > div:nth-child(2) { position: relative; height: 18px; font-size: 12px; color: var(--texto-3); }
   .f-eixo span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
   .f-eixo span:first-child { transform: translateX(-50%); }
   .f-eixo span:nth-child(2) { transform: none; }
   .f-eixo span:last-child { transform: translateX(-100%); }
-  .card.wide { grid-column: 1 / -1; border-left-color: var(--homem); }
+  .card.wide { grid-column: 1 / -1; border-left-color: var(--neutro); }
   #pilha div { color: #fff; }
   @media (max-width: 720px) {
     .funil .f-linha { grid-template-columns: 86px minmax(0, 1fr); row-gap: 2px; padding-bottom: 6px; }
@@ -186,12 +188,9 @@
 <body>
 <main>
   <p class="kicker">Eleições municipais 2024 · Um olhar conservador sobre os dados</p>
-  <h1>Não é o eleitor: <em>94%</em> da distância entre mulheres e prefeituras surge antes da urna</h1>
+  <h1>Onde estão as candidatas? Em <em>2 de cada 3</em> municípios, nenhuma mulher disputou a prefeitura</h1>
   <p class="lead">As mulheres são <b class="num" id="t-eleit"></b> do eleitorado e <b class="num" id="t-eleitas"></b> das prefeitas e prefeitos eleitos em 2024. A narrativa feminista costuma atribuir essa diferença ao "machismo do eleitor" e pedir cotas de resultado. Os dados oficiais do TSE contam outra história: quase toda a diferença aparece na <b>decisão de se candidatar</b>. Quando vencem, as mulheres vencem com votações iguais às dos homens, são mais escolarizadas e, em sua maioria, foram eleitas por partidos de centro e de direita.</p>
 
-  <aside class="pov">
-    <b>Ponto de vista declarado.</b> Este painel adota uma leitura conservadora e crítica ao feminismo, em diálogo com autoras como a deputada estadual Ana Campagnolo (PL-SC), autora de <i>Feminismo: perversão e subversão</i>. As interpretações são da autora; os números são do TSE e estão abertos para conferência na tabela ao final.
-  </aside>
 
   <!-- Abertura: funil -->
   <section aria-labelledby="s0">
@@ -200,7 +199,7 @@
     <p class="sub">Participação das mulheres em cada etapa da eleição para prefeito em 2024.</p>
     <div id="funil"></div>
     <div class="tiles" style="margin-top:18px">
-      <div class="tile"><b id="f-antes" style="color:var(--mulher)"></b><span>da distância surge <strong>antes</strong> da urna, na formação das candidaturas</span></div>
+      <div class="tile"><b id="f-antes" style="color:var(--acento)"></b><span>da distância surge <strong>antes</strong> da urna, na formação das candidaturas</span></div>
       <div class="tile"><b id="f-urna"></b><span>da distância surge <strong>na</strong> urna, entre candidatas e eleitas</span></div>
       <div class="tile"><b id="f-cand"></b><span>mulheres se candidataram a prefeita, contra <strong id="f-candh"></strong> homens</span></div>
     </div>
@@ -209,12 +208,12 @@
   <!-- 1. Municípios sem candidata -->
   <section aria-labelledby="s1">
     <span class="num-sec">1 · A escolha de concorrer</span>
-    <h2 id="s1">Em 2 de cada 3 municípios, nenhuma mulher disputou a prefeitura</h2>
+    <h2 id="s1">Em 3.583 municípios, só homens disputaram a prefeitura</h2>
     <p class="sub">Sem candidata não há como eleger uma prefeita. Em <b id="t-sem"></b> municípios, todas as candidaturas a prefeito eram de homens.</p>
     <div class="hero">
       <div>
         <div class="waffle" id="waffle" role="img" aria-label="De cada 100 municípios, 65 não tiveram nenhuma candidata a prefeita"></div>
-        <p class="legenda" style="margin-top:12px"><span><i style="background:var(--homem);opacity:.55"></i>Só homens na disputa</span><span><i style="background:var(--mulher)"></i>Ao menos uma candidata</span></p>
+        <p class="legenda" style="margin-top:12px"><span><i style="background:var(--homem)"></i>Só homens na disputa</span><span><i style="background:var(--mulher)"></i>Ao menos uma candidata</span></p>
       </div>
       <div>
         <div class="grande num" id="t-sem-pct"></div>
@@ -424,7 +423,7 @@ $("pilha-leg").innerHTML = ordem.map(k => {
 const ESCALA = 50;
 function legendaRef(id) {
   $(id).innerHTML = `<span><i style="background:var(--mulher)"></i>Acima da média nacional</span>` +
-    `<span><i style="background:var(--homem)"></i>Abaixo da média</span>` +
+    `<span><i style="background:var(--neutro)"></i>Abaixo da média</span>` +
     `<span class="ref"><i></i>Média nacional (${pc(MEDIA)})</span>` +
     `<span>Escala até 50% (paridade)</span>`;
 }
