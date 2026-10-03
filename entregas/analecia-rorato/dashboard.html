@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mulheres no comando das prefeituras · Eleições 2024</title>
+<title>Mulheres e prefeituras · Um olhar conservador</title>
 <style>
   :root {
     color-scheme: light;
@@ -150,143 +150,171 @@
     .halt .pista { margin-top: 12px; }
   }
   @media (max-width: 440px) { .pilha-leg, .cards, .comparar { grid-template-columns: 1fr; } }
+
+  :root { --dir: #2a78d6; --centro: #8a8880; --esq: #e34948; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dir: #3987e5; --centro: #7d7b75; --esq: #e66767; } }
+  :root[data-theme="dark"] { --dir: #3987e5; --centro: #7d7b75; --esq: #e66767; }
+  .pov { margin-top: 18px; border: 1px solid var(--borda); border-left: 4px solid var(--dir); background: var(--superficie); border-radius: 10px; padding: 12px 16px; font-size: 15px; color: var(--texto-2); }
+  .pov b { color: var(--texto); }
+  .h3 { font-size: 18px; line-height: 1.3; margin: 28px 0 4px; }
+  .funil .f-linha { display: grid; grid-template-columns: 120px minmax(0, 1fr) 190px; gap: 12px; align-items: center; min-height: 54px; border-radius: 6px; }
+  .funil .f-linha:hover, .funil .f-linha:focus { background: var(--grade); outline: none; }
+  .funil .rot { font-size: 15px; font-weight: 600; text-align: right; }
+  .funil .trilho { position: relative; height: 34px; background: var(--grade); border-radius: 4px; }
+  .funil .f-barra { position: absolute; left: 0; top: 0; bottom: 0; background: var(--mulher); border-radius: 0 4px 4px 0; }
+  .funil .f-barra b { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .funil .f-par { position: absolute; left: 50%; top: -4px; bottom: -4px; border-left: 2px dashed var(--ref); opacity: .6; }
+  .funil .f-queda { font-size: 14px; color: var(--texto-2); }
+  .funil .f-queda b { color: var(--mulher); }
+  .f-eixo { display: grid; grid-template-columns: 120px minmax(0, 1fr) 190px; gap: 12px; margin-top: 4px; }
+  .f-eixo > div:nth-child(2) { position: relative; height: 18px; font-size: 12px; color: var(--texto-3); }
+  .f-eixo span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+  .f-eixo span:first-child { transform: translateX(-50%); }
+  .f-eixo span:nth-child(2) { transform: none; }
+  .f-eixo span:last-child { transform: translateX(-100%); }
+  .card.wide { grid-column: 1 / -1; border-left-color: var(--homem); }
+  #pilha div { color: #fff; }
+  @media (max-width: 720px) {
+    .funil .f-linha { grid-template-columns: 86px minmax(0, 1fr); row-gap: 2px; padding-bottom: 6px; }
+    .funil .f-queda { grid-column: 2; font-size: 13px; }
+    .f-eixo { grid-template-columns: 86px minmax(0, 1fr); }
+    .f-eixo > div:last-child { display: none; }
+    #pilha-leg { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <p class="kicker">Eleições municipais 2024 · Subsídio para audiência pública</p>
-  <h1>Só <em>13 em cada 100</em> prefeituras do Brasil são comandadas por mulheres</h1>
-  <p class="lead">Nas eleições de 2024, mulheres venceram a disputa para prefeita em apenas <b class="num" id="t-lead"></b> municípios. A ausência é maior no Sul, no Sudeste e nas grandes cidades. Quando disputam e vencem, porém, as mulheres têm votações iguais às dos homens.</p>
+  <p class="kicker">Eleições municipais 2024 · Um olhar conservador sobre os dados</p>
+  <h1>Não é o eleitor: <em>94%</em> da distância entre mulheres e prefeituras surge antes da urna</h1>
+  <p class="lead">As mulheres são <b class="num" id="t-eleit"></b> do eleitorado e <b class="num" id="t-eleitas"></b> das prefeitas e prefeitos eleitos em 2024. A narrativa feminista costuma atribuir essa diferença ao "machismo do eleitor" e pedir cotas de resultado. Os dados oficiais do TSE contam outra história: quase toda a diferença aparece na <b>decisão de se candidatar</b>. Quando vencem, as mulheres vencem com votações iguais às dos homens, são mais escolarizadas e, em sua maioria, foram eleitas por partidos de centro e de direita.</p>
 
-  <!-- 1. Abertura -->
+  <aside class="pov">
+    <b>Ponto de vista declarado.</b> Este painel adota uma leitura conservadora e crítica ao feminismo, em diálogo com autoras como a deputada estadual Ana Campagnolo (PL-SC), autora de <i>Feminismo: perversão e subversão</i>. As interpretações são da autora; os números são do TSE e estão abertos para conferência na tabela ao final.
+  </aside>
+
+  <!-- Abertura: funil -->
+  <section aria-labelledby="s0">
+    <span class="num-sec">O funil</span>
+    <h2 id="s0">De 52,5% das eleitoras a 15,4% das candidaturas: é aí que a diferença nasce</h2>
+    <p class="sub">Participação das mulheres em cada etapa da eleição para prefeito em 2024.</p>
+    <div id="funil"></div>
+    <div class="tiles" style="margin-top:18px">
+      <div class="tile"><b id="f-antes" style="color:var(--mulher)"></b><span>da distância surge <strong>antes</strong> da urna, na formação das candidaturas</span></div>
+      <div class="tile"><b id="f-urna"></b><span>da distância surge <strong>na</strong> urna, entre candidatas e eleitas</span></div>
+      <div class="tile"><b id="f-cand"></b><span>mulheres se candidataram a prefeita, contra <strong id="f-candh"></strong> homens</span></div>
+    </div>
+  </section>
+
+  <!-- 1. Municípios sem candidata -->
   <section aria-labelledby="s1">
+    <span class="num-sec">1 · A escolha de concorrer</span>
+    <h2 id="s1">Em 2 de cada 3 municípios, nenhuma mulher disputou a prefeitura</h2>
+    <p class="sub">Sem candidata não há como eleger uma prefeita. Em <b id="t-sem"></b> municípios, todas as candidaturas a prefeito eram de homens.</p>
     <div class="hero">
       <div>
-        <div class="waffle" id="waffle" role="img" aria-label="13 de cada 100 prefeituras são comandadas por mulheres"></div>
-        <p class="legenda" style="margin-top:12px"><span><i style="background:var(--mulher)"></i>Prefeita</span><span><i style="background:var(--homem);opacity:.55"></i>Prefeito</span></p>
+        <div class="waffle" id="waffle" role="img" aria-label="De cada 100 municípios, 65 não tiveram nenhuma candidata a prefeita"></div>
+        <p class="legenda" style="margin-top:12px"><span><i style="background:var(--homem);opacity:.55"></i>Só homens na disputa</span><span><i style="background:var(--mulher)"></i>Ao menos uma candidata</span></p>
       </div>
       <div>
-        <h2 id="s1" class="sr" style="position:absolute;left:-9999px">Visão geral</h2>
-        <div class="grande num" id="t-pct"></div>
-        <p class="grande-legenda">das prefeituras eleitas em 2024 têm uma <b>mulher</b> como titular: <b class="num" id="t-abs"></b>.</p>
-        <div class="tiles">
-          <div class="tile"><b id="t-vice"></b><span>dos vice-prefeitos são mulheres</span></div>
-          <div class="tile"><b id="t-dupla"></b><span>das chapas têm prefeita <i>e</i> vice mulheres</span></div>
-          <div class="tile"><b id="t-grandes"></b><span>prefeitas entre os 14 maiores eleitorados</span></div>
-        </div>
+        <div class="grande num" id="t-sem-pct"></div>
+        <p class="grande-legenda">dos municípios não tiveram <b>nenhuma</b> candidata a prefeita.</p>
+        <p class="sub" style="margin:0">Os dados não dizem <i>por que</i> as mulheres não se candidataram. Supor que seja sempre opressão é uma escolha ideológica, não uma conclusão dos números. Também é possível que muitas mulheres prefiram outros caminhos: a família, a carreira, a vida comunitária ou o mandato de vereadora.</p>
       </div>
     </div>
   </section>
 
-  <!-- 2. Chapas -->
+  <!-- 2. Na urna -->
   <section aria-labelledby="s2">
-    <span class="num-sec">1 · A porta de entrada</span>
-    <h2 id="s2">Elas aparecem mais como vice do que como titular</h2>
-    <p class="sub">Há mais chapas com <b>homem prefeito e vice mulher</b> do que o contrário. Duas mulheres na mesma chapa são raras.</p>
-    <div class="comparar">
-      <div class="tile"><b id="c-pref" style="color:var(--mulher)"></b><span>dos prefeitos (titulares) são mulheres</span></div>
-      <div class="tile"><b id="c-vice" style="color:var(--mulher)"></b><span>dos vice-prefeitos são mulheres</span></div>
-    </div>
-    <div class="pilha" id="pilha" role="img" aria-label="Composição das 5.553 chapas eleitas por gênero"></div>
-    <div class="pilha-leg" id="pilha-leg"></div>
+    <span class="num-sec">2 · O eleitor</span>
+    <h2 id="s2">Na urna, a diferença é bem menor, e no Nordeste quase desaparece</h2>
+    <p class="sub">Taxa de sucesso: de cada 100 candidaturas que foram à urna, quantas se elegeram.</p>
+    <p class="legenda"><span><i style="background:var(--mulher)"></i>Candidatas</span><span><i style="background:var(--homem)"></i>Candidatos</span></p>
+    <div id="g-sucesso"></div>
+    <p class="nota">Honestidade com os dados: as candidatas vencem um pouco menos (31,5% contra 37,7%), e no Sul e no Sudeste essa diferença passa de 10 pontos. Mesmo assim, ela responde por só 6% da distância total, contra 94% da etapa de candidaturas. E, entre quem vence, a votação é igual: a mediana é de 57,9% dos votos válidos para as prefeitas e 58,2% para os prefeitos.</p>
   </section>
 
-  <!-- 3. Regiões -->
+  <!-- 3. Partidos -->
   <section aria-labelledby="s3">
-    <span class="num-sec">2 · Onde</span>
-    <h2 id="s3">Nordeste e Norte elegem quase o dobro de prefeitas que Sul e Sudeste</h2>
-    <p class="sub">Percentual de prefeituras comandadas por mulheres em cada região.</p>
-    <div class="legenda" id="leg-reg"></div>
-    <div id="g-regiao"></div>
-    <p class="nota">O Sudeste tem 1.656 prefeituras e só 152 prefeitas (9,2%). O Nordeste tem 1.791 e 332 prefeitas (18,5%).</p>
+    <span class="num-sec">3 · Quem elege mulheres</span>
+    <h2 id="s3">85% das prefeitas foram eleitas por partidos de centro e de direita</h2>
+    <p class="sub">Mulher no poder não é monopólio da esquerda. Distribuição das <span id="t-734"></span> prefeitas pelo bloco do partido.</p>
+    <div class="pilha" id="pilha" role="img" aria-label="Prefeitas por bloco partidário"></div>
+    <div class="pilha-leg" id="pilha-leg" style="grid-template-columns:repeat(3,minmax(0,1fr))"></div>
+    <h3 class="h3">O Nordeste vota na esquerda para presidente, mas lá a maior taxa de prefeitas é da direita</h3>
+    <p class="sub">Percentual de mulheres entre as prefeituras conquistadas por cada bloco.</p>
+    <div class="legenda" id="leg-bloco"></div>
+    <div id="g-bloco"></div>
+    <p class="nota">No país, as taxas dos três blocos são próximas (de 12,7% a 14,9%). No Nordeste, a direita chega a 20,3%, a maior taxa entre todos os recortes. Prefeitas de partidos de direita governam grandes cidades como Campo Grande (PP), Aracaju (PL) e Mogi das Cruzes (PL).</p>
   </section>
 
-  <!-- 4. Estados -->
+  <!-- 4. Perfil -->
   <section aria-labelledby="s4">
-    <span class="num-sec">3 · Onde, em detalhe</span>
-    <h2 id="s4">De 25% no Rio Grande do Norte a 2,6% no Espírito Santo</h2>
-    <p class="sub">Percentual de prefeitas por estado, em ordem decrescente. Em destaque, os estados acima da média nacional. O DF não tem prefeituras.</p>
-    <div class="legenda" id="leg-uf"></div>
-    <div id="g-uf"></div>
-    <p class="nota">* Estados com menos de 30 municípios: um único caso muda muito o percentual. Roraima, por exemplo, tem 4 prefeitas em 15 municípios.</p>
-  </section>
-
-  <!-- 5. Porte -->
-  <section aria-labelledby="s5">
-    <span class="num-sec">4 · Que tipo de cidade</span>
-    <h2 id="s5">Nas cidades médias elas chegam a 16%; nas maiores, a zero</h2>
-    <p class="sub">Percentual de prefeitas pelo porte do município, medido pelos votos válidos para prefeito no turno decisivo.</p>
-    <div class="legenda" id="leg-porte"></div>
-    <div id="g-porte"></div>
-    <p class="nota">Nenhum dos 14 municípios com mais de 500 mil votos válidos elegeu uma prefeita. Entre as cidades com mais de 100 mil votos, só <span id="t-gr100"></span> têm uma mulher no comando. As maiores delas são:</p>
-    <ul class="grandes-lista" id="grandes-lista"></ul>
-  </section>
-
-  <!-- 6. Partidos -->
-  <section aria-labelledby="s6">
-    <span class="num-sec">5 · Por quais partidos</span>
-    <h2 id="s6">Nenhum grande partido chega a 1 prefeita em cada 4 prefeituras</h2>
-    <p class="sub">Percentual de prefeitas entre as prefeituras conquistadas por cada partido (partidos com 50 ou mais prefeituras).</p>
-    <div class="legenda" id="leg-part"></div>
-    <div id="g-partido"></div>
-    <p class="nota">A variação entre os partidos (de 5% a 22%) é menor do que a variação entre os estados (de 3% a 27%).</p>
-  </section>
-
-  <!-- 7. Perfil -->
-  <section aria-labelledby="s7">
-    <span class="num-sec">6 · O que não é óbvio</span>
-    <h2 id="s7">Quando eleitas, elas vencem com a mesma força e são mais escolarizadas</h2>
-    <p class="sub">Comparação entre as 734 prefeitas e os 4.819 prefeitos eleitos. A única grande diferença está na escolaridade.</p>
+    <span class="num-sec">4 · Mérito</span>
+    <h2 id="s4">Quando chegam lá, chegam preparadas: 81% das prefeitas têm curso superior</h2>
+    <p class="sub">Comparação entre as 734 prefeitas e os 4.819 prefeitos eleitos. Sem nenhuma cota para o cargo, elas venceram com a mesma força e mais escolaridade.</p>
     <p class="legenda"><span><i style="background:var(--mulher)"></i>Prefeitas</span><span><i style="background:var(--homem)"></i>Prefeitos</span></p>
     <div id="g-perfil"></div>
-    <p class="nota">Votação: mediana do percentual de votos válidos obtido pela chapa vencedora. Raça/cor: soma de pretas/os e pardas/os, conforme autodeclaração ao TSE. Escala de 0 a 100% em todas as linhas, exceto idade (de 30 a 70 anos).</p>
+    <p class="nota">Votação: mediana do percentual de votos válidos da chapa vencedora. Raça/cor: soma de pretas/os e pardas/os, conforme autodeclaração ao TSE. Escala de 0 a 100% em todas as linhas, exceto idade (de 30 a 70 anos).</p>
   </section>
 
-  <!-- 8. Fechamento -->
-  <section aria-labelledby="s8">
+  <!-- 5. Onde -->
+  <section aria-labelledby="s5">
+    <span class="num-sec">5 · Onde</span>
+    <h2 id="s5">Nordeste e Norte têm quase o dobro de prefeitas de Sul e Sudeste</h2>
+    <p class="sub">Percentual de prefeituras comandadas por mulheres, por região e por estado.</p>
+    <div class="legenda" id="leg-reg"></div>
+    <div id="g-regiao"></div>
+    <details style="margin-top:18px"><summary>Ver os 26 estados</summary><div id="g-uf" style="margin-top:12px"></div>
+      <p class="nota">* Estados com menos de 30 municípios: um único caso muda muito o percentual.</p></details>
+  </section>
+
+  <!-- 6. Fechamento -->
+  <section aria-labelledby="s6">
     <span class="num-sec">Para o debate</span>
-    <h2 id="s8">Onde vale a pena olhar com mais atenção</h2>
-    <p class="sub">O padrão sugere que o gargalo está mais em <b>chegar à cabeça da chapa</b> do que em vencer a eleição.</p>
+    <h2 id="s6">O que estes dados dizem ao discurso feminista</h2>
+    <p class="sub">Cinco pontos para a comissão, cada um ancorado em um número.</p>
     <div class="cards">
-      <div class="card"><h3>1. A escolha das candidaturas</h3><p>Mulheres vencem com votações iguais às dos homens (mediana de 57,9% contra 58,2%), mas são só 13% das titulares.</p><p class="pergunta">O que acontece antes da urna, na definição de quem encabeça a chapa?</p></div>
-      <div class="card"><h3>2. O papel de vice</h3><p>19,3% das vices são mulheres, e há 955 chapas com homem prefeito e vice mulher, contra 615 no arranjo inverso.</p><p class="pergunta">A vice tem servido de degrau para a titularidade ou de teto?</p></div>
-      <div class="card"><h3>3. Sul, Sudeste e estados abaixo de 8%</h3><p>Espírito Santo (2,6%), Acre (4,5%), Rondônia (5,8%), Rio Grande do Sul (7,8%) e Minas Gerais (8,0%) ficam bem abaixo da média.</p><p class="pergunta">O que o Nordeste, com 18,5%, tem feito diferente?</p></div>
-      <div class="card"><h3>4. As grandes cidades</h3><p>Nenhuma prefeita nos 14 maiores eleitorados, e só 10% nas cidades com mais de 50 mil votos. São as prefeituras com mais orçamento e visibilidade.</p><p class="pergunta">Por que a presença feminina recua justamente onde o cargo tem mais peso?</p></div>
+      <div class="card"><h3>1. O "machismo do eleitor" explica pouco</h3><p>94% da distância entre eleitoras e prefeitas surge antes da urna. Entre as vencedoras, a votação é igual à dos homens.</p><p class="pergunta">Por que o debate insiste em tratar o eleitor como o obstáculo principal?</p></div>
+      <div class="card"><h3>2. Cotas de resultado atacam a etapa errada</h3><p>Não existe cota para prefeito: a reserva de 30% de candidaturas vale só para eleições proporcionais. Ainda assim, 734 mulheres venceram por voto direto.</p><p class="pergunta">Faz sentido impor resultados quando a decisão de concorrer é livre?</p></div>
+      <div class="card"><h3>3. Respeitar a escolha das mulheres</h3><p>Em 65% dos municípios nenhuma mulher se candidatou. Os dados não mostram que isso seja imposição.</p><p class="pergunta">Antes de criar políticas, alguém perguntou às mulheres por que elas não quiseram disputar?</p></div>
+      <div class="card"><h3>4. Mulheres conservadoras também são mulheres</h3><p>85% das prefeitas vêm de partidos de centro e de direita, e a maior taxa do país está na direita nordestina (20,3%).</p><p class="pergunta">Por que essas mulheres raramente são ouvidas quando se fala em "representatividade"?</p></div>
+      <div class="card wide"><h3>5. Onde a urna pesa mais: Sul e Sudeste</h3><p>No Sudeste, 23% das candidatas se elegem, contra 35% dos candidatos. No Sul, são 29% contra 39%. É onde o voto mais parece pesar contra elas.</p><p class="pergunta">O que explica esse desempenho? Partido, recursos de campanha, disputa contra quem já é prefeito? Vale investigar antes de concluir.</p></div>
     </div>
   </section>
 
   <!-- Tabelas -->
   <section aria-labelledby="s9">
     <h2 id="s9" style="font-size:18px">Dados em tabela</h2>
-    <details><summary>Por região</summary><div class="tabela-scroll" id="tb-regiao"></div></details>
-    <details><summary>Por estado</summary><div class="tabela-scroll" id="tb-uf"></div></details>
-    <details><summary>Por porte do município</summary><div class="tabela-scroll" id="tb-porte"></div></details>
-    <details><summary>Por partido</summary><div class="tabela-scroll" id="tb-partido"></div></details>
+    <details><summary>Funil e taxa de sucesso por região</summary><div class="tabela-scroll" id="tb-sucesso"></div></details>
+    <details><summary>Prefeitas por bloco partidário</summary><div class="tabela-scroll" id="tb-bloco"></div></details>
+    <details><summary>Prefeitas por região</summary><div class="tabela-scroll" id="tb-regiao"></div></details>
+    <details><summary>Prefeitas por estado</summary><div class="tabela-scroll" id="tb-uf"></div></details>
   </section>
 
   <footer>
-    <h2>Fonte e notas metodológicas</h2>
+    <h2>Fontes e notas metodológicas</h2>
     <ul>
-      <li><b>Fonte:</b> TSE, candidaturas e resultados das eleições municipais ordinárias de 2024, consolidados na base <i>eleitos.csv</i> (extração de 01/10/2026). Cobre 5.553 dos 5.569 municípios com eleição: 16 ficaram fora por falta de confirmação.</li>
-      <li><b>Gênero:</b> é o gênero cadastrado no TSE (campo DS_GENERO). Não equivale a identidade de gênero.</li>
-      <li><b>Contagem:</b> cada prefeitura é contada uma vez, pela pessoa eleita prefeita/o. Vices são analisadas separadamente e cruzadas pela chapa.</li>
-      <li><b>Porte:</b> a base não traz população. O porte foi aproximado pelos votos válidos para prefeito no município, no turno decisivo.</li>
-      <li><b>Recorte:</b> o dashboard retrata quem foi eleito em 2024, e não quem ocupa o cargo hoje. Estão incluídas 9 chapas cassadas e 14 com eleição documentada por fonte histórica (1 delas com prefeita).</li>
-      <li><b>Reeleição:</b> é a declaração de candidatura à reeleição feita ao TSE, sem auditoria do mandato anterior.</li>
+      <li><b>Eleitos:</b> base <i>eleitos.csv</i> (TSE, eleições municipais ordinárias de 2024, extração de 01/10/2026). São 5.553 municípios; 16 ficaram fora por falta de confirmação. O retrato é de quem foi eleito em 2024, não de quem ocupa o cargo hoje.</li>
+      <li><b>Candidaturas:</b> TSE, <i>consulta_cand_2024</i>. Considerei as candidaturas a prefeito do 1º turno da eleição ordinária que chegaram à urna (com situação ELEITO, NÃO ELEITO ou 2º TURNO), nos mesmos municípios da base: 15.098 candidaturas em 5.544 municípios. As eleições suplementares ficaram de fora.</li>
+      <li><b>Eleitorado:</b> TSE, <i>perfil_eleitorado_2024</i> (gerado em 12/09/2025): 81.806.914 mulheres em 155.912.680 eleitores (52,5%).</li>
+      <li><b>Distância de 94%:</b> do eleitorado às candidaturas, a participação feminina cai 37,0 pontos percentuais (de 52,5% para 15,4%). Das candidaturas às eleitas, cai 2,2 pontos (de 15,4% para 13,2%). 37,0 ÷ 39,3 = 94%.</li>
+      <li><b>Taxa de sucesso:</b> eleitas ÷ candidatas que foram à urna, e o mesmo para os homens. A taxa não controla fatores como partido, recursos de campanha ou candidatura à reeleição.</li>
+      <li><b>Blocos partidários</b> (classificação simplificada e discutível): <b>direita</b> = PL, PP, Republicanos, União, Novo, PRD, PRTB, DC, Mobiliza, Agir, PMB; <b>esquerda</b> = PT, PSB, PDT, PC do B, PSOL, PV, Rede; <b>centro</b> = os demais (MDB, PSD, PSDB, Podemos, Avante, Solidariedade, Cidadania).</li>
+      <li><b>Gênero:</b> é o gênero cadastrado no TSE, que só tem as categorias masculino e feminino. Não equivale a identidade de gênero.</li>
     </ul>
   </footer>
 </main>
 <div id="tip" role="tooltip"></div>
 
 <script>
-const D = {"total": {"m": 734, "n": 5553}, "vice": {"m": 1074, "n": 5553}, "chapas": {"hh": 3864, "hm": 955, "mh": 615, "mm": 119}, "regiao": [{"k": "Centro-Oeste", "m": 61, "n": 467}, {"k": "Nordeste", "m": 332, "n": 1791}, {"k": "Norte", "m": 74, "n": 449}, {"k": "Sudeste", "m": 152, "n": 1656}, {"k": "Sul", "m": 115, "n": 1190}], "uf": [{"k": "AC", "m": 1, "n": 22, "nome": "Acre"}, {"k": "AL", "m": 24, "n": 102, "nome": "Alagoas"}, {"k": "AM", "m": 11, "n": 62, "nome": "Amazonas"}, {"k": "AP", "m": 2, "n": 16, "nome": "Amapá"}, {"k": "BA", "m": 60, "n": 416, "nome": "Bahia"}, {"k": "CE", "m": 38, "n": 184, "nome": "Ceará"}, {"k": "ES", "m": 2, "n": 78, "nome": "Espírito Santo"}, {"k": "GO", "m": 35, "n": 246, "nome": "Goiás"}, {"k": "MA", "m": 42, "n": 217, "nome": "Maranhão"}, {"k": "MG", "m": 68, "n": 852, "nome": "Minas Gerais"}, {"k": "MS", "m": 13, "n": 79, "nome": "Mato Grosso do Sul"}, {"k": "MT", "m": 13, "n": 142, "nome": "Mato Grosso"}, {"k": "PA", "m": 28, "n": 143, "nome": "Pará"}, {"k": "PB", "m": 54, "n": 223, "nome": "Paraíba"}, {"k": "PE", "m": 30, "n": 183, "nome": "Pernambuco"}, {"k": "PI", "m": 29, "n": 224, "nome": "Piauí"}, {"k": "PR", "m": 37, "n": 398, "nome": "Paraná"}, {"k": "RJ", "m": 14, "n": 90, "nome": "Rio de Janeiro"}, {"k": "RN", "m": 42, "n": 167, "nome": "Rio Grande do Norte"}, {"k": "RO", "m": 3, "n": 52, "nome": "Rondônia"}, {"k": "RR", "m": 4, "n": 15, "nome": "Roraima"}, {"k": "RS", "m": 39, "n": 497, "nome": "Rio Grande do Sul"}, {"k": "SC", "m": 39, "n": 295, "nome": "Santa Catarina"}, {"k": "SE", "m": 13, "n": 75, "nome": "Sergipe"}, {"k": "SP", "m": 68, "n": 636, "nome": "São Paulo"}, {"k": "TO", "m": 25, "n": 139, "nome": "Tocantins"}], "porte": [{"k": "até 5 mil", "m": 237, "n": 1905}, {"k": "5 a 10 mil", "m": 185, "n": 1470}, {"k": "10 a 20 mil", "m": 171, "n": 1178}, {"k": "20 a 50 mil", "m": 107, "n": 666}, {"k": "50 a 100 mil", "m": 18, "n": 173}, {"k": "100 a 500 mil", "m": 15, "n": 138}, {"k": "mais de 500 mil", "m": 0, "n": 14}], "partido": [{"k": "AVANTE", "m": 12, "n": 136}, {"k": "MDB", "m": 132, "n": 860}, {"k": "PDT", "m": 14, "n": 151}, {"k": "PL", "m": 61, "n": 517}, {"k": "PODE", "m": 17, "n": 127}, {"k": "PP", "m": 90, "n": 750}, {"k": "PRD", "m": 4, "n": 77}, {"k": "PSB", "m": 51, "n": 311}, {"k": "PSD", "m": 104, "n": 890}, {"k": "PSDB", "m": 32, "n": 275}, {"k": "PT", "m": 41, "n": 252}, {"k": "REPUBLICANOS", "m": 51, "n": 437}, {"k": "SOLIDARIEDADE", "m": 14, "n": 63}, {"k": "UNIÃO", "m": 92, "n": 589}], "grandes": {"m": 15, "n": 152, "top": [{"k": "Campo Grande (MS)", "partido": "PP", "votos": 432811}, {"k": "Contagem (MG)", "partido": "PT", "votos": 310076}, {"k": "Aracaju (SE)", "partido": "PL", "votos": 288766}, {"k": "Juiz de Fora (MG)", "partido": "PT", "votos": 279545}, {"k": "Mogi das Cruzes (SP)", "partido": "PL", "votos": 221751}]}, "perfil": {"superior": {"m": 80.8, "h": 56.3}, "idade": {"m": 49.4, "h": 49.8}, "votos": {"m": 57.9, "h": 58.2}, "reeleicao": {"m": 45.2, "h": 44.3}, "negras": {"m": 33.1, "h": 33.6}}};
+const D = {"total": {"m": 734, "n": 5553}, "vice": {"m": 1074, "n": 5553}, "chapas": {"hh": 3864, "hm": 955, "mh": 615, "mm": 119}, "regiao": [{"k": "Centro-Oeste", "m": 61, "n": 467}, {"k": "Nordeste", "m": 332, "n": 1791}, {"k": "Norte", "m": 74, "n": 449}, {"k": "Sudeste", "m": 152, "n": 1656}, {"k": "Sul", "m": 115, "n": 1190}], "uf": [{"k": "AC", "m": 1, "n": 22, "nome": "Acre"}, {"k": "AL", "m": 24, "n": 102, "nome": "Alagoas"}, {"k": "AM", "m": 11, "n": 62, "nome": "Amazonas"}, {"k": "AP", "m": 2, "n": 16, "nome": "Amapá"}, {"k": "BA", "m": 60, "n": 416, "nome": "Bahia"}, {"k": "CE", "m": 38, "n": 184, "nome": "Ceará"}, {"k": "ES", "m": 2, "n": 78, "nome": "Espírito Santo"}, {"k": "GO", "m": 35, "n": 246, "nome": "Goiás"}, {"k": "MA", "m": 42, "n": 217, "nome": "Maranhão"}, {"k": "MG", "m": 68, "n": 852, "nome": "Minas Gerais"}, {"k": "MS", "m": 13, "n": 79, "nome": "Mato Grosso do Sul"}, {"k": "MT", "m": 13, "n": 142, "nome": "Mato Grosso"}, {"k": "PA", "m": 28, "n": 143, "nome": "Pará"}, {"k": "PB", "m": 54, "n": 223, "nome": "Paraíba"}, {"k": "PE", "m": 30, "n": 183, "nome": "Pernambuco"}, {"k": "PI", "m": 29, "n": 224, "nome": "Piauí"}, {"k": "PR", "m": 37, "n": 398, "nome": "Paraná"}, {"k": "RJ", "m": 14, "n": 90, "nome": "Rio de Janeiro"}, {"k": "RN", "m": 42, "n": 167, "nome": "Rio Grande do Norte"}, {"k": "RO", "m": 3, "n": 52, "nome": "Rondônia"}, {"k": "RR", "m": 4, "n": 15, "nome": "Roraima"}, {"k": "RS", "m": 39, "n": 497, "nome": "Rio Grande do Sul"}, {"k": "SC", "m": 39, "n": 295, "nome": "Santa Catarina"}, {"k": "SE", "m": 13, "n": 75, "nome": "Sergipe"}, {"k": "SP", "m": 68, "n": 636, "nome": "São Paulo"}, {"k": "TO", "m": 25, "n": 139, "nome": "Tocantins"}], "porte": [{"k": "até 5 mil", "m": 237, "n": 1905}, {"k": "5 a 10 mil", "m": 185, "n": 1470}, {"k": "10 a 20 mil", "m": 171, "n": 1178}, {"k": "20 a 50 mil", "m": 107, "n": 666}, {"k": "50 a 100 mil", "m": 18, "n": 173}, {"k": "100 a 500 mil", "m": 15, "n": 138}, {"k": "mais de 500 mil", "m": 0, "n": 14}], "partido": [{"k": "AVANTE", "m": 12, "n": 136}, {"k": "MDB", "m": 132, "n": 860}, {"k": "PDT", "m": 14, "n": 151}, {"k": "PL", "m": 61, "n": 517}, {"k": "PODE", "m": 17, "n": 127}, {"k": "PP", "m": 90, "n": 750}, {"k": "PRD", "m": 4, "n": 77}, {"k": "PSB", "m": 51, "n": 311}, {"k": "PSD", "m": 104, "n": 890}, {"k": "PSDB", "m": 32, "n": 275}, {"k": "PT", "m": 41, "n": 252}, {"k": "REPUBLICANOS", "m": 51, "n": 437}, {"k": "SOLIDARIEDADE", "m": 14, "n": 63}, {"k": "UNIÃO", "m": 92, "n": 589}], "grandes": {"m": 15, "n": 152, "top": [{"k": "Campo Grande (MS)", "partido": "PP", "votos": 432811}, {"k": "Contagem (MG)", "partido": "PT", "votos": 310076}, {"k": "Aracaju (SE)", "partido": "PL", "votos": 288766}, {"k": "Juiz de Fora (MG)", "partido": "PT", "votos": 279545}, {"k": "Mogi das Cruzes (SP)", "partido": "PL", "votos": 221751}]}, "perfil": {"superior": {"m": 80.8, "h": 56.3}, "idade": {"m": 49.4, "h": 49.8}, "votos": {"m": 57.9, "h": 58.2}, "reeleicao": {"m": 45.2, "h": 44.3}, "negras": {"m": 33.1, "h": 33.6}}, "eleitorado": {"m": 81806914, "n": 155912680, "data": "12/09/2025"}, "cand": {"m": 2331, "h": 12767, "n": 15098, "munis": 5544}, "sem_candidata": {"m": 3583, "n": 5544}, "sucesso": {"m": 31.5, "h": 37.7}, "sucesso_regiao": [{"k": "Centro-Oeste", "cm": 187, "ch": 1022, "em": 61, "eh": 406, "m": 32.6, "h": 39.7, "pc": 15.5}, {"k": "Nordeste", "cm": 858, "ch": 3659, "em": 332, "eh": 1459, "m": 38.7, "h": 39.9, "pc": 19.0}, {"k": "Norte", "cm": 223, "ch": 1071, "em": 74, "eh": 375, "m": 33.2, "h": 35.0, "pc": 17.2}, {"k": "Sudeste", "cm": 659, "ch": 4274, "em": 152, "eh": 1504, "m": 23.1, "h": 35.2, "pc": 13.4}, {"k": "Sul", "cm": 404, "ch": 2741, "em": 115, "eh": 1075, "m": 28.5, "h": 39.2, "pc": 12.8}], "blocos": {"brasil": [{"k": "Centro", "m": 315, "n": 2384}, {"k": "Direita", "m": 307, "n": 2418}, {"k": "Esquerda", "m": 112, "n": 751}], "nordeste": [{"k": "Centro", "m": 125, "n": 745}, {"k": "Direita", "m": 120, "n": 590}, {"k": "Esquerda", "m": 87, "n": 456}]}};
 
 const fmt = n => n.toLocaleString("pt-BR");
 const pc = (v, c = 1) => v.toLocaleString("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c }) + "%";
 const pm = r => 100 * r.m / r.n;
 const $ = id => document.getElementById(id);
 const MEDIA = pm(D.total);
-const ESCALA = 50;
 
 // Tooltip compartilhado (mouse, toque e teclado)
 const tip = $("tip");
@@ -307,43 +335,93 @@ function ligarTip(el, html) {
 }
 addEventListener("scroll", esconder, { passive: true });
 
-// Textos da abertura
-$("t-lead").textContent = fmt(D.total.m) + " dos " + fmt(D.total.n);
-$("t-pct").textContent = pc(MEDIA);
-$("t-abs").textContent = fmt(D.total.m) + " de " + fmt(D.total.n);
-$("t-vice").textContent = pc(pm(D.vice));
-$("t-dupla").textContent = pc(100 * D.chapas.mm / D.total.n);
-const top14 = D.porte.find(p => p.k === "mais de 500 mil");
-$("t-grandes").textContent = top14.m + " de " + top14.n;
-$("c-pref").textContent = pc(MEDIA);
-$("c-vice").textContent = pc(pm(D.vice));
-$("t-gr100").textContent = D.grandes.m + " de " + D.grandes.n;
-$("grandes-lista").innerHTML = D.grandes.top.map(g => `<li>${g.k} · ${fmt(g.votos)} votos</li>`).join("");
-
-// Waffle: 100 quadrados
-const nM = Math.round(MEDIA);
-$("waffle").innerHTML = Array.from({ length: 100 }, (_, i) => `<span class="${i < nM ? "m" : ""}"></span>`).join("");
-
-// Barra empilhada das chapas
-const C = D.chapas, NC = C.hh + C.hm + C.mh + C.mm;
-const partes = [
-  ["hh", C.hh, "Prefeito e vice homens", "var(--homem)"],
-  ["hm", C.hm, "Prefeito homem e vice mulher", "repeating-linear-gradient(45deg,var(--homem) 0 3px,var(--mulher) 3px 6px)"],
-  ["mh", C.mh, "Prefeita mulher e vice homem", "repeating-linear-gradient(135deg,var(--mulher) 0 3px,var(--homem) 3px 6px)"],
-  ["mm", C.mm, "Prefeita e vice mulheres", "var(--mulher)"],
+// Funil
+const pEleit = pm(D.eleitorado), pCand = 100 * D.cand.m / D.cand.n;
+const queda1 = pEleit - pCand, queda2 = pCand - MEDIA;
+$("t-eleit").textContent = pc(pEleit);
+$("t-eleitas").textContent = pc(MEDIA);
+$("f-antes").textContent = pc(100 * queda1 / (queda1 + queda2), 0);
+$("f-urna").textContent = pc(100 * queda2 / (queda1 + queda2), 0);
+$("f-cand").textContent = fmt(D.cand.m);
+$("f-candh").textContent = fmt(D.cand.h);
+const etapas = [
+  ["Eleitorado", pEleit, `${fmt(D.eleitorado.m)} eleitoras em ${fmt(D.eleitorado.n)}`],
+  ["Candidaturas", pCand, `${fmt(D.cand.m)} candidatas em ${fmt(D.cand.n)} candidaturas que foram à urna`],
+  ["Eleitas", MEDIA, `${fmt(D.total.m)} prefeitas em ${fmt(D.total.n)} prefeituras`],
 ];
+const funil = $("funil");
+funil.className = "funil";
+etapas.forEach(([rot, v, det], i) => {
+  const l = document.createElement("div");
+  l.className = "f-linha";
+  l.innerHTML = `<div class="rot">${rot}</div><div class="trilho"><div class="f-barra" style="width:${v}%"><b>${pc(v)}</b></div>` +
+    `<div class="f-par"></div></div>` +
+    (i > 0 ? `<div class="f-queda">−${(etapas[i - 1][1] - v).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} pontos ${i === 1 ? "<b>antes da urna</b>" : "na urna"}</div>` : `<div class="f-queda">&nbsp;</div>`);
+  ligarTip(l, `<b>${rot}: ${pc(v)} de mulheres</b>${det}`);
+  funil.appendChild(l);
+});
+funil.insertAdjacentHTML("beforeend", `<div class="f-eixo"><div></div><div><span style="left:50%">50% = paridade</span><span style="left:0">0%</span><span style="left:100%">100%</span></div><div></div></div>`);
+
+// Municípios sem candidata (waffle)
+const pSem = 100 * D.sem_candidata.m / D.sem_candidata.n;
+$("t-sem").textContent = fmt(D.sem_candidata.m) + " dos " + fmt(D.sem_candidata.n);
+$("t-sem-pct").textContent = pc(pSem, 0);
+const nSem = Math.round(pSem);
+$("waffle").innerHTML = Array.from({ length: 100 }, (_, i) => `<span class="${i >= nSem ? "m" : ""}"></span>`).join("");
+
+// Halteres genéricos
+function halteres(alvo, linhas) {
+  const gp = $(alvo);
+  linhas.forEach(([rot, v, lo, hi, f, tipExtra]) => {
+    const x = n => (n - lo) / (hi - lo) * 100;
+    const a = Math.min(x(v.m), x(v.h)), b = Math.max(x(v.m), x(v.h));
+    const perto = b - a < 12;
+    const row = document.createElement("div");
+    row.className = "halt";
+    row.innerHTML = `<div class="rot">${rot}</div><div class="pista">` +
+      `<div class="liga" style="left:${a}%;width:${b - a}%"></div>` +
+      `<div class="pt h" style="left:${x(v.h)}%">${perto ? "" : `<b>${f(v.h)}</b>`}</div>` +
+      `<div class="pt m" style="left:${x(v.m)}%"><b>${perto ? f(v.m) + " × " + f(v.h) : f(v.m)}</b></div></div>`;
+    ligarTip(row, `<b>${rot}</b>Mulheres: ${f(v.m)}<br>Homens: ${f(v.h)}${tipExtra || ""}`);
+    gp.appendChild(row);
+  });
+}
+const p0 = v => pc(v, 0);
+halteres("g-sucesso", [
+  ["Brasil", D.sucesso, 0, 60, p0, `<br>${fmt(D.total.m)} eleitas de ${fmt(D.cand.m)} candidatas`],
+  ...D.sucesso_regiao.sort((a, b) => (b.m - b.h) - (a.m - a.h)).map(r =>
+    [r.k, r, 0, 60, p0, `<br>${fmt(r.em)} eleitas de ${fmt(r.cm)} candidatas<br>${fmt(r.eh)} eleitos de ${fmt(r.ch)} candidatos`]),
+]);
+const P = D.perfil;
+halteres("g-perfil", [
+  ["Ensino superior completo", P.superior, 0, 100, p0],
+  ["Votação da chapa (mediana dos votos válidos)", P.votos, 0, 100, p0],
+  ["Candidata/o à reeleição", P.reeleicao, 0, 100, p0],
+  ["Pretas/os e pardas/os", P.negras, 0, 100, p0],
+  ["Idade média na posse", P.idade, 30, 70, v => v.toLocaleString("pt-BR") + " anos"],
+]);
+
+// Blocos: barra empilhada
+const B = D.blocos.brasil, ordem = ["Direita", "Centro", "Esquerda"];
+const corBloco = { Direita: "var(--dir)", Centro: "var(--centro)", Esquerda: "var(--esq)" };
+const totM = D.total.m;
+$("t-734").textContent = fmt(totM);
 const pilha = $("pilha");
-partes.forEach(([cls, v, rot]) => {
+ordem.forEach(k => {
+  const b = B.find(x => x.k === k);
   const d = document.createElement("div");
-  d.className = cls; d.style.flex = v;
-  if (v / NC > .12) d.innerHTML = `<span>${pc(100 * v / NC, 0)}</span>`;
-  ligarTip(d, `<b>${rot}</b>${fmt(v)} chapas · ${pc(100 * v / NC)}`);
+  d.style.flex = b.m; d.style.background = corBloco[k];
+  if (b.m / totM > .2) d.innerHTML = `<span>${k} ${pc(100 * b.m / totM, 0)}</span>`;
+  ligarTip(d, `<b>${k}</b>${fmt(b.m)} prefeitas · ${pc(100 * b.m / totM)} do total`);
   pilha.appendChild(d);
 });
-$("pilha-leg").innerHTML = partes.map(([, v, rot, bg]) =>
-  `<div><b>${fmt(v)}</b><i style="background:${bg}"></i>${rot} <span class="num">(${pc(100 * v / NC)})</span></div>`).join("");
+$("pilha-leg").innerHTML = ordem.map(k => {
+  const b = B.find(x => x.k === k);
+  return `<div><b>${fmt(b.m)}</b><i style="background:${corBloco[k]}"></i>${k} <span class="num">(${pc(100 * b.m / totM)})</span></div>`;
+}).join("");
 
-// Barras horizontais com escala fixa 0–50%, linha da média e da paridade
+// Barras horizontais com escala fixa 0–50%
+const ESCALA = 50;
 function legendaRef(id) {
   $(id).innerHTML = `<span><i style="background:var(--mulher)"></i>Acima da média nacional</span>` +
     `<span><i style="background:var(--homem)"></i>Abaixo da média</span>` +
@@ -377,36 +455,14 @@ function barras(alvo, linhas, opc = {}) {
   el.appendChild(eixo);
 }
 const desc = a => [...a].sort((x, y) => pm(y) - pm(x));
-["leg-reg", "leg-uf", "leg-porte", "leg-part"].forEach(legendaRef);
+["leg-reg", "leg-bloco"].forEach(legendaRef);
+const linhasBloco = [
+  ...D.blocos.nordeste.map(b => ({ ...b, k: "Nordeste · " + b.k, rotulo: "NE · " + b.k })),
+  ...D.blocos.brasil.map(b => ({ ...b, k: "Brasil · " + b.k, rotulo: "Brasil · " + b.k })),
+];
+barras("g-bloco", desc(linhasBloco), { rot: "130px" });
 barras("g-regiao", desc(D.regiao), { rot: "120px" });
 barras("g-uf", desc(D.uf).map(r => ({ ...r, rotulo: innerWidth < 720 ? r.k : r.nome })), { rot: "170px" });
-barras("g-porte", D.porte.map(r => ({ ...r, nome: r.k + " votos válidos" })), { rot: "130px" });
-barras("g-partido", desc(D.partido), { rot: "130px" });
-
-// Halteres do perfil
-const P = D.perfil;
-const ind = [
-  ["Ensino superior completo", P.superior, 0, 100, v => pc(v, 0)],
-  ["Votação da chapa (mediana dos votos válidos)", P.votos, 0, 100, v => pc(v, 0)],
-  ["Candidata/o à reeleição", P.reeleicao, 0, 100, v => pc(v, 0)],
-  ["Pretas/os e pardas/os", P.negras, 0, 100, v => pc(v, 0)],
-  ["Idade média na posse", P.idade, 30, 70, v => v.toLocaleString("pt-BR") + " anos"],
-];
-const gp = $("g-perfil");
-ind.forEach(([rot, v, lo, hi, f]) => {
-  const x = n => (n - lo) / (hi - lo) * 100;
-  const a = Math.min(x(v.m), x(v.h)), b = Math.max(x(v.m), x(v.h));
-  const row = document.createElement("div");
-  row.className = "halt";
-  // Rótulo de cima fica com quem está mais à direita; evita sobreposição quando os pontos estão juntos
-  const perto = b - a < 12;
-  row.innerHTML = `<div class="rot">${rot}</div><div class="pista">` +
-    `<div class="liga" style="left:${a}%;width:${b - a}%"></div>` +
-    `<div class="pt h" style="left:${x(v.h)}%">${perto ? "" : `<b>${f(v.h)}</b>`}</div>` +
-    `<div class="pt m" style="left:${x(v.m)}%"><b>${perto ? f(v.m) + " × " + f(v.h) : f(v.m)}</b></div></div>`;
-  ligarTip(row, `<b>${rot}</b>Prefeitas: ${f(v.m)}<br>Prefeitos: ${f(v.h)}`);
-  gp.appendChild(row);
-});
 
 // Tabelas
 function tabela(id, linhas, cab) {
@@ -416,8 +472,11 @@ function tabela(id, linhas, cab) {
 }
 tabela("tb-regiao", desc(D.regiao), "Região");
 tabela("tb-uf", desc(D.uf), "Estado");
-tabela("tb-porte", D.porte, "Votos válidos no município");
-tabela("tb-partido", desc(D.partido), "Partido");
+tabela("tb-bloco", desc(linhasBloco), "Bloco");
+$("tb-sucesso").innerHTML = `<table><thead><tr><th>Região</th><th>Candidatas</th><th>Eleitas</th><th>Sucesso mulheres</th><th>Candidatos</th><th>Eleitos</th><th>Sucesso homens</th></tr></thead><tbody>` +
+  D.sucesso_regiao.map(r => `<tr><td>${r.k}</td><td>${fmt(r.cm)}</td><td>${fmt(r.em)}</td><td>${pc(r.m)}</td><td>${fmt(r.ch)}</td><td>${fmt(r.eh)}</td><td>${pc(r.h)}</td></tr>`).join("") +
+  `<tr><th>Brasil</th><th>${fmt(D.cand.m)}</th><th>${fmt(D.total.m)}</th><th>${pc(D.sucesso.m)}</th><th>${fmt(D.cand.h)}</th><th>${fmt(D.total.n - D.total.m)}</th><th>${pc(D.sucesso.h)}</th></tr></tbody></table>` +
+  `<p class="nota">Eleitorado: ${fmt(D.eleitorado.m)} mulheres em ${fmt(D.eleitorado.n)} (${pc(pEleit)}). Municípios sem nenhuma candidata: ${fmt(D.sem_candidata.m)} de ${fmt(D.sem_candidata.n)}.</p>`;
 </script>
 </body>
 </html>
