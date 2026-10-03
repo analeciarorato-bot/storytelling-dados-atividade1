@@ -1,6 +1,6 @@
 ## Qual história meu dashboard conta?
 
-As mulheres são 52,5% do eleitorado, mas só 13,2% das prefeitas e prefeitos eleitos em 2024. A narrativa feminista costuma culpar o "machismo do eleitor" e pedir cotas. Os dados do TSE mostram que 94% dessa distância surge antes da urna: em 65% dos municípios, nenhuma mulher se candidatou. Na urna, elas vencem um pouco menos que os homens (31,5% contra 37,7%), mas essa etapa explica só 6% da distância. Quando vencem, é com a mesma votação e mais escolaridade. 85% das prefeitas foram eleitas por partidos de centro e de direita. O debate deveria respeitar a liberdade de escolha das mulheres, em vez de impor resultados.
+As mulheres são 52,5% do eleitorado, mas só 13,2% das prefeitas e prefeitos eleitos em 2024. A narrativa feminista costuma culpar o "machismo do eleitor" e pedir cotas. Os dados do TSE mostram que 94% dessa distância surge antes da urna: em 65% dos municípios, nenhuma mulher se candidatou. Na urna, elas vencem um pouco menos que os homens (31,5% contra 37,7%), mas essa etapa explica só 6% da distância. Quando vencem, é com a mesma votação e mais escolaridade. 85% das prefeitas foram eleitas por partidos de direita e centro-direita. O debate deveria respeitar a liberdade de escolha das mulheres, em vez de impor resultados.
 
 ## Contexto do projeto
 
@@ -23,7 +23,8 @@ Usei essas duas bases extras porque a base principal só tem os eleitos. Sem as 
 - **Gênero:** `genero_tse` é o gênero cadastrado no TSE (só masculino e feminino) e não equivale a identidade de gênero.
 - **Contagens:** para contar prefeituras, filtrei `cargo = Prefeito`, que dá uma linha por chapa.
 - **Taxa de sucesso:** é a divisão de eleitas por candidatas, e o mesmo para os homens. Não controla partido, recursos de campanha nem candidatura à reeleição.
-- **Blocos partidários:** a classificação em direita, centro e esquerda é simplificada e discutível, e o dashboard a explica no rodapé.
+- **Lado ideológico dos partidos:** uso a classificação acadêmica de Bolognesi, Ribeiro, Codato e Silva ("O desaparecimento do centro ideológico no sistema partidário brasileiro", *Opinião Pública*, 2025). Cientistas políticos dão uma nota de 0 a 10, e uso a média ponderada de 2018 e 2022. Como em 2022 nenhum partido ficou no centro, agrupei em dois lados: **esquerda** (inclui centro-esquerda: PT, PC do B, PSB, PDT, PV, Rede) e **direita** (inclui centro-direita: MDB, PSDB, Solidariedade, Cidadania, Avante, Mobiliza, PSD, PP, Podemos, PRD, PMB, PRTB, Agir, DC, Republicanos, União, Novo, PL). Adaptações: PRD = fusão de PTB e Patriota (direita); Mobiliza = ex-PMN.
+- **Correção de rota:** uma primeira versão usava uma divisão em três blocos (com "centro") feita sem critério formal. Com o critério acadêmico, a frase "no Nordeste, a maior taxa de prefeitas é da direita" deixou de se sustentar (esquerda 19,1% contra direita 18,4%) e foi trocada por "direita e esquerda elegem mulheres na mesma proporção".
 - **Recorte:** retrata quem foi eleito em 2024, não quem está no cargo hoje. 16 municípios ficaram fora da base.
 
 ## Público-alvo
@@ -54,7 +55,7 @@ Sigo a skill `dashboard-narrativo-para-decisores` (`skill.md`).
 - **Funil em barras (eleitorado → candidaturas → eleitas):** escala de 0 a 100%, com a linha da paridade (50%) e a queda em pontos indicada em cada etapa. É o gráfico que prova a tese central.
 - **Grade de 100 quadradinhos para os municípios sem candidata:** "65 de cada 100" é concreto e memorável.
 - **Halteres para a taxa de sucesso por região:** mostram ao mesmo tempo onde a diferença quase some (Nordeste) e onde ela existe (Sul e Sudeste). Não escondo o dado desfavorável à tese.
-- **Barra empilhada por bloco partidário, com cores convencionais da política:** direita em azul, centro em cinza e esquerda em vermelho. Em seguida, barras com o recorte do Nordeste.
+- **Barra empilhada em dois lados, com a lista de partidos de cada um:** direita em azul e esquerda em vermelho, as cores convencionais da política. Cada partido aparece com a sua conta (prefeitas / prefeituras), para a audiência conferir onde cada um foi classificado. Em seguida, barras comparam os dois lados no Brasil e no Nordeste.
 - **Cores de gênero:** mulheres em rosa claro e homens em azul claro, as cores tradicionais, de leitura imediata para o público. São iguais em todo o painel. Os textos de destaque usam um rosa mais escuro para manter a legibilidade, e as barras "abaixo da média" ficam em cinza para não serem confundidas com "homens".
 - **Escala fixa de 0 a 50% (paridade) nos gráficos de percentual:** deixa as comparações honestas e consistentes.
 - **Cinco cartões finais "O que estes dados dizem ao discurso feminista":** quatro críticas ancoradas em números e uma ressalva honesta (Sul e Sudeste).

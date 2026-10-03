@@ -109,3 +109,24 @@ Não é o eleitor: 94% da distância entre mulheres e prefeituras surge antes da
 ```
 
 **O que funcionou / o que mudei:** Tirei a caixa de ponto de vista, para o painel ir direto aos dados, e troquei as cores para rosa claro (mulheres) e azul claro (homens). O Claude manteve os textos de destaque num rosa mais escuro, porque o rosa claro fica ilegível como texto, e passou as barras "abaixo da média" para cinza, para não confundir com "homens". Para o título, ele propôs quatro opções e escolhi "Onde estão as candidatas? Em 2 de cada 3 municípios, nenhuma mulher disputou a prefeitura".
+
+---
+
+## Prompt 9
+
+```
+esquerda direita, quero que voce coloque os partidos que se enquadram em cada categoria. 
+antes de colocar la me diga qual o seu criterio para escolhr direita e esquerda
+```
+
+**O que funcionou / o que mudei:** Pedir o critério antes foi decisivo. O Claude admitiu que a divisão anterior não tinha base formal e propôs a classificação acadêmica de Bolognesi, Ribeiro, Codato e Silva (*Opinião Pública*, 2025), feita com cientistas políticos e conferida no PDF do artigo. Ele mostrou o impacto nos números: os 85% de prefeitas de direita se mantiveram, mas a frase "no Nordeste a maior taxa é da direita" deixou de valer (esquerda 19,1% contra direita 18,4%).
+
+---
+
+## Prompt 10
+
+```
+opção 1, dois lados com a lista de partidos
+```
+
+**O que funcionou / o que mudei:** Escolhi agrupar em dois lados (esquerda incluindo centro-esquerda, e direita incluindo centro-direita), porque o próprio artigo mostra que não há mais partidos no centro, e porque assim evito o rótulo "extrema direita" no painel. O gráfico agora lista os partidos de cada lado, com as prefeitas e as prefeituras de cada um. A frase sobre o Nordeste foi corrigida para "direita e esquerda elegem mulheres na mesma proporção", e o rodapé cita a fonte.

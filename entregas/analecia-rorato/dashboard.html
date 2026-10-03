@@ -172,6 +172,11 @@
   .f-eixo span:first-child { transform: translateX(-50%); }
   .f-eixo span:nth-child(2) { transform: none; }
   .f-eixo span:last-child { transform: translateX(-100%); }
+  .lados { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .lados > div { border: 1px solid var(--borda); border-radius: 10px; padding: 12px 14px; }
+  .lados b { font-size: 14px; }
+  .lados b i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .lados p { margin: 6px 0 0; font-size: 13px; line-height: 1.7; color: var(--texto-2); }
   .card.wide { grid-column: 1 / -1; border-left-color: var(--neutro); }
   #pilha div { color: #fff; }
   @media (max-width: 720px) {
@@ -180,6 +185,7 @@
     .f-eixo { grid-template-columns: 86px minmax(0, 1fr); }
     .f-eixo > div:last-child { display: none; }
     #pilha-leg { grid-template-columns: 1fr !important; }
+    .lados { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -187,7 +193,7 @@
 <main>
   <p class="kicker">Eleições municipais 2024 · Um olhar conservador sobre os dados</p>
   <h1>Onde estão as candidatas? Em <em>2 de cada 3</em> municípios, nenhuma mulher disputou a prefeitura</h1>
-  <p class="lead">As mulheres são <b class="num" id="t-eleit"></b> do eleitorado e <b class="num" id="t-eleitas"></b> das prefeitas e prefeitos eleitos em 2024. A narrativa feminista costuma atribuir essa diferença ao "machismo do eleitor" e pedir cotas de resultado. Os dados oficiais do TSE contam outra história: quase toda a diferença aparece na <b>decisão de se candidatar</b>. Quando vencem, as mulheres vencem com votações iguais às dos homens, são mais escolarizadas e, em sua maioria, foram eleitas por partidos de centro e de direita.</p>
+  <p class="lead">As mulheres são <b class="num" id="t-eleit"></b> do eleitorado e <b class="num" id="t-eleitas"></b> das prefeitas e prefeitos eleitos em 2024. A narrativa feminista costuma atribuir essa diferença ao "machismo do eleitor" e pedir cotas de resultado. Os dados oficiais do TSE contam outra história: quase toda a diferença aparece na <b>decisão de se candidatar</b>. Quando vencem, as mulheres vencem com votações iguais às dos homens, são mais escolarizadas e, em sua maioria, foram eleitas por partidos de direita e centro-direita.</p>
 
 
   <!-- Abertura: funil -->
@@ -234,15 +240,16 @@
   <!-- 3. Partidos -->
   <section aria-labelledby="s3">
     <span class="num-sec">3 · Quem elege mulheres</span>
-    <h2 id="s3">85% das prefeitas foram eleitas por partidos de centro e de direita</h2>
-    <p class="sub">Mulher no poder não é monopólio da esquerda. Distribuição das <span id="t-734"></span> prefeitas pelo bloco do partido.</p>
+    <h2 id="s3">85% das prefeitas foram eleitas por partidos de direita e centro-direita</h2>
+    <p class="sub">Mulher no poder não é monopólio da esquerda. Distribuição das <span id="t-734"></span> prefeitas pelo lado ideológico do partido, segundo a classificação de cientistas políticos (Bolognesi et al., 2025).</p>
     <div class="pilha" id="pilha" role="img" aria-label="Prefeitas por bloco partidário"></div>
-    <div class="pilha-leg" id="pilha-leg" style="grid-template-columns:repeat(3,minmax(0,1fr))"></div>
-    <h3 class="h3">O Nordeste vota na esquerda para presidente, mas lá a maior taxa de prefeitas é da direita</h3>
-    <p class="sub">Percentual de mulheres entre as prefeituras conquistadas por cada bloco.</p>
+    <div class="pilha-leg" id="pilha-leg" style="grid-template-columns:repeat(2,minmax(0,1fr))"></div>
+    <div class="lados" id="lados"></div>
+    <h3 class="h3">No Nordeste, que vota na esquerda para presidente, direita e esquerda elegem mulheres na mesma proporção</h3>
+    <p class="sub">Percentual de mulheres entre as prefeituras conquistadas por cada lado.</p>
     <div class="legenda" id="leg-bloco"></div>
     <div id="g-bloco"></div>
-    <p class="nota">No país, as taxas dos três blocos são próximas (de 12,7% a 14,9%). No Nordeste, a direita chega a 20,3%, a maior taxa entre todos os recortes. Prefeitas de partidos de direita governam grandes cidades como Campo Grande (PP), Aracaju (PL) e Mogi das Cruzes (PL).</p>
+    <p class="nota">A taxa é parecida nos dois lados: 14,9% na esquerda e 13,0% na direita no país; 19,1% e 18,4% no Nordeste. A presença feminina não depende do lado ideológico. Mas, como a direita governa quase 9 de cada 10 prefeituras (4.802 de 5.553), é dela a grande maioria das prefeitas, inclusive em grandes cidades como Campo Grande (PP), Aracaju (PL) e Mogi das Cruzes (PL).</p>
   </section>
 
   <!-- 4. Perfil -->
@@ -275,7 +282,7 @@
       <div class="card"><h3>1. O "machismo do eleitor" explica pouco</h3><p>94% da distância entre eleitoras e prefeitas surge antes da urna. Entre as vencedoras, a votação é igual à dos homens.</p><p class="pergunta">Por que o debate insiste em tratar o eleitor como o obstáculo principal?</p></div>
       <div class="card"><h3>2. Cotas de resultado atacam a etapa errada</h3><p>Não existe cota para prefeito: a reserva de 30% de candidaturas vale só para eleições proporcionais. Ainda assim, 734 mulheres venceram por voto direto.</p><p class="pergunta">Faz sentido impor resultados quando a decisão de concorrer é livre?</p></div>
       <div class="card"><h3>3. Respeitar a escolha das mulheres</h3><p>Em 65% dos municípios nenhuma mulher se candidatou. Os dados não mostram que isso seja imposição.</p><p class="pergunta">Antes de criar políticas, alguém perguntou às mulheres por que elas não quiseram disputar?</p></div>
-      <div class="card"><h3>4. Mulheres conservadoras também são mulheres</h3><p>85% das prefeitas vêm de partidos de centro e de direita, e a maior taxa do país está na direita nordestina (20,3%).</p><p class="pergunta">Por que essas mulheres raramente são ouvidas quando se fala em "representatividade"?</p></div>
+      <div class="card"><h3>4. Mulheres conservadoras também são mulheres</h3><p>85% das prefeitas (622 de 734) vêm de partidos de direita e centro-direita. No Nordeste, direita e esquerda elegem mulheres na mesma proporção (18,4% e 19,1%).</p><p class="pergunta">Por que essas mulheres raramente são ouvidas quando se fala em "representatividade"?</p></div>
       <div class="card wide"><h3>5. Onde a urna pesa mais: Sul e Sudeste</h3><p>No Sudeste, 23% das candidatas se elegem, contra 35% dos candidatos. No Sul, são 29% contra 39%. É onde o voto mais parece pesar contra elas.</p><p class="pergunta">O que explica esse desempenho? Partido, recursos de campanha, disputa contra quem já é prefeito? Vale investigar antes de concluir.</p></div>
     </div>
   </section>
@@ -297,7 +304,7 @@
       <li><b>Eleitorado:</b> TSE, <i>perfil_eleitorado_2024</i> (gerado em 12/09/2025): 81.806.914 mulheres em 155.912.680 eleitores (52,5%).</li>
       <li><b>Distância de 94%:</b> do eleitorado às candidaturas, a participação feminina cai 37,0 pontos percentuais (de 52,5% para 15,4%). Das candidaturas às eleitas, cai 2,2 pontos (de 15,4% para 13,2%). 37,0 ÷ 39,3 = 94%.</li>
       <li><b>Taxa de sucesso:</b> eleitas ÷ candidatas que foram à urna, e o mesmo para os homens. A taxa não controla fatores como partido, recursos de campanha ou candidatura à reeleição.</li>
-      <li><b>Blocos partidários</b> (classificação simplificada e discutível): <b>direita</b> = PL, PP, Republicanos, União, Novo, PRD, PRTB, DC, Mobiliza, Agir, PMB; <b>esquerda</b> = PT, PSB, PDT, PC do B, PSOL, PV, Rede; <b>centro</b> = os demais (MDB, PSD, PSDB, Podemos, Avante, Solidariedade, Cidadania).</li>
+      <li><b>Lado ideológico dos partidos:</b> classificação de Bolognesi, Ribeiro, Codato e Silva, "O desaparecimento do centro ideológico no sistema partidário brasileiro", <i>Opinião Pública</i>, v. 31, 2025. Cientistas políticos dão uma nota de 0 (esquerda) a 10 (direita), e usei a média ponderada das pesquisas de 2018 e 2022. Em 2022, nenhum partido ficou no centro (de 4,5 a 5,5). <b>Esquerda</b> (inclui centro-esquerda, nota até 4,49): PT, PC do B, PSB, PDT, PV e Rede. <b>Direita</b> (inclui centro-direita, nota a partir de 5,51): MDB, PSDB, Solidariedade, Cidadania, Avante, Mobiliza (ex-PMN), PSD, PP, Podemos, PRD (fusão de PTB e Patriota), PMB, PRTB, Agir, DC, Republicanos, União, Novo e PL.</li>
       <li><b>Gênero:</b> é o gênero cadastrado no TSE, que só tem as categorias masculino e feminino. Não equivale a identidade de gênero.</li>
     </ul>
   </footer>
@@ -305,7 +312,7 @@
 <div id="tip" role="tooltip"></div>
 
 <script>
-const D = {"total": {"m": 734, "n": 5553}, "vice": {"m": 1074, "n": 5553}, "chapas": {"hh": 3864, "hm": 955, "mh": 615, "mm": 119}, "regiao": [{"k": "Centro-Oeste", "m": 61, "n": 467}, {"k": "Nordeste", "m": 332, "n": 1791}, {"k": "Norte", "m": 74, "n": 449}, {"k": "Sudeste", "m": 152, "n": 1656}, {"k": "Sul", "m": 115, "n": 1190}], "uf": [{"k": "AC", "m": 1, "n": 22, "nome": "Acre"}, {"k": "AL", "m": 24, "n": 102, "nome": "Alagoas"}, {"k": "AM", "m": 11, "n": 62, "nome": "Amazonas"}, {"k": "AP", "m": 2, "n": 16, "nome": "Amapá"}, {"k": "BA", "m": 60, "n": 416, "nome": "Bahia"}, {"k": "CE", "m": 38, "n": 184, "nome": "Ceará"}, {"k": "ES", "m": 2, "n": 78, "nome": "Espírito Santo"}, {"k": "GO", "m": 35, "n": 246, "nome": "Goiás"}, {"k": "MA", "m": 42, "n": 217, "nome": "Maranhão"}, {"k": "MG", "m": 68, "n": 852, "nome": "Minas Gerais"}, {"k": "MS", "m": 13, "n": 79, "nome": "Mato Grosso do Sul"}, {"k": "MT", "m": 13, "n": 142, "nome": "Mato Grosso"}, {"k": "PA", "m": 28, "n": 143, "nome": "Pará"}, {"k": "PB", "m": 54, "n": 223, "nome": "Paraíba"}, {"k": "PE", "m": 30, "n": 183, "nome": "Pernambuco"}, {"k": "PI", "m": 29, "n": 224, "nome": "Piauí"}, {"k": "PR", "m": 37, "n": 398, "nome": "Paraná"}, {"k": "RJ", "m": 14, "n": 90, "nome": "Rio de Janeiro"}, {"k": "RN", "m": 42, "n": 167, "nome": "Rio Grande do Norte"}, {"k": "RO", "m": 3, "n": 52, "nome": "Rondônia"}, {"k": "RR", "m": 4, "n": 15, "nome": "Roraima"}, {"k": "RS", "m": 39, "n": 497, "nome": "Rio Grande do Sul"}, {"k": "SC", "m": 39, "n": 295, "nome": "Santa Catarina"}, {"k": "SE", "m": 13, "n": 75, "nome": "Sergipe"}, {"k": "SP", "m": 68, "n": 636, "nome": "São Paulo"}, {"k": "TO", "m": 25, "n": 139, "nome": "Tocantins"}], "porte": [{"k": "até 5 mil", "m": 237, "n": 1905}, {"k": "5 a 10 mil", "m": 185, "n": 1470}, {"k": "10 a 20 mil", "m": 171, "n": 1178}, {"k": "20 a 50 mil", "m": 107, "n": 666}, {"k": "50 a 100 mil", "m": 18, "n": 173}, {"k": "100 a 500 mil", "m": 15, "n": 138}, {"k": "mais de 500 mil", "m": 0, "n": 14}], "partido": [{"k": "AVANTE", "m": 12, "n": 136}, {"k": "MDB", "m": 132, "n": 860}, {"k": "PDT", "m": 14, "n": 151}, {"k": "PL", "m": 61, "n": 517}, {"k": "PODE", "m": 17, "n": 127}, {"k": "PP", "m": 90, "n": 750}, {"k": "PRD", "m": 4, "n": 77}, {"k": "PSB", "m": 51, "n": 311}, {"k": "PSD", "m": 104, "n": 890}, {"k": "PSDB", "m": 32, "n": 275}, {"k": "PT", "m": 41, "n": 252}, {"k": "REPUBLICANOS", "m": 51, "n": 437}, {"k": "SOLIDARIEDADE", "m": 14, "n": 63}, {"k": "UNIÃO", "m": 92, "n": 589}], "grandes": {"m": 15, "n": 152, "top": [{"k": "Campo Grande (MS)", "partido": "PP", "votos": 432811}, {"k": "Contagem (MG)", "partido": "PT", "votos": 310076}, {"k": "Aracaju (SE)", "partido": "PL", "votos": 288766}, {"k": "Juiz de Fora (MG)", "partido": "PT", "votos": 279545}, {"k": "Mogi das Cruzes (SP)", "partido": "PL", "votos": 221751}]}, "perfil": {"superior": {"m": 80.8, "h": 56.3}, "idade": {"m": 49.4, "h": 49.8}, "votos": {"m": 57.9, "h": 58.2}, "reeleicao": {"m": 45.2, "h": 44.3}, "negras": {"m": 33.1, "h": 33.6}}, "eleitorado": {"m": 81806914, "n": 155912680, "data": "12/09/2025"}, "cand": {"m": 2331, "h": 12767, "n": 15098, "munis": 5544}, "sem_candidata": {"m": 3583, "n": 5544}, "sucesso": {"m": 31.5, "h": 37.7}, "sucesso_regiao": [{"k": "Centro-Oeste", "cm": 187, "ch": 1022, "em": 61, "eh": 406, "m": 32.6, "h": 39.7, "pc": 15.5}, {"k": "Nordeste", "cm": 858, "ch": 3659, "em": 332, "eh": 1459, "m": 38.7, "h": 39.9, "pc": 19.0}, {"k": "Norte", "cm": 223, "ch": 1071, "em": 74, "eh": 375, "m": 33.2, "h": 35.0, "pc": 17.2}, {"k": "Sudeste", "cm": 659, "ch": 4274, "em": 152, "eh": 1504, "m": 23.1, "h": 35.2, "pc": 13.4}, {"k": "Sul", "cm": 404, "ch": 2741, "em": 115, "eh": 1075, "m": 28.5, "h": 39.2, "pc": 12.8}], "blocos": {"brasil": [{"k": "Centro", "m": 315, "n": 2384}, {"k": "Direita", "m": 307, "n": 2418}, {"k": "Esquerda", "m": 112, "n": 751}], "nordeste": [{"k": "Centro", "m": 125, "n": 745}, {"k": "Direita", "m": 120, "n": 590}, {"k": "Esquerda", "m": 87, "n": 456}]}};
+const D = {"total": {"m": 734, "n": 5553}, "vice": {"m": 1074, "n": 5553}, "chapas": {"hh": 3864, "hm": 955, "mh": 615, "mm": 119}, "regiao": [{"k": "Centro-Oeste", "m": 61, "n": 467}, {"k": "Nordeste", "m": 332, "n": 1791}, {"k": "Norte", "m": 74, "n": 449}, {"k": "Sudeste", "m": 152, "n": 1656}, {"k": "Sul", "m": 115, "n": 1190}], "uf": [{"k": "AC", "m": 1, "n": 22, "nome": "Acre"}, {"k": "AL", "m": 24, "n": 102, "nome": "Alagoas"}, {"k": "AM", "m": 11, "n": 62, "nome": "Amazonas"}, {"k": "AP", "m": 2, "n": 16, "nome": "Amapá"}, {"k": "BA", "m": 60, "n": 416, "nome": "Bahia"}, {"k": "CE", "m": 38, "n": 184, "nome": "Ceará"}, {"k": "ES", "m": 2, "n": 78, "nome": "Espírito Santo"}, {"k": "GO", "m": 35, "n": 246, "nome": "Goiás"}, {"k": "MA", "m": 42, "n": 217, "nome": "Maranhão"}, {"k": "MG", "m": 68, "n": 852, "nome": "Minas Gerais"}, {"k": "MS", "m": 13, "n": 79, "nome": "Mato Grosso do Sul"}, {"k": "MT", "m": 13, "n": 142, "nome": "Mato Grosso"}, {"k": "PA", "m": 28, "n": 143, "nome": "Pará"}, {"k": "PB", "m": 54, "n": 223, "nome": "Paraíba"}, {"k": "PE", "m": 30, "n": 183, "nome": "Pernambuco"}, {"k": "PI", "m": 29, "n": 224, "nome": "Piauí"}, {"k": "PR", "m": 37, "n": 398, "nome": "Paraná"}, {"k": "RJ", "m": 14, "n": 90, "nome": "Rio de Janeiro"}, {"k": "RN", "m": 42, "n": 167, "nome": "Rio Grande do Norte"}, {"k": "RO", "m": 3, "n": 52, "nome": "Rondônia"}, {"k": "RR", "m": 4, "n": 15, "nome": "Roraima"}, {"k": "RS", "m": 39, "n": 497, "nome": "Rio Grande do Sul"}, {"k": "SC", "m": 39, "n": 295, "nome": "Santa Catarina"}, {"k": "SE", "m": 13, "n": 75, "nome": "Sergipe"}, {"k": "SP", "m": 68, "n": 636, "nome": "São Paulo"}, {"k": "TO", "m": 25, "n": 139, "nome": "Tocantins"}], "porte": [{"k": "até 5 mil", "m": 237, "n": 1905}, {"k": "5 a 10 mil", "m": 185, "n": 1470}, {"k": "10 a 20 mil", "m": 171, "n": 1178}, {"k": "20 a 50 mil", "m": 107, "n": 666}, {"k": "50 a 100 mil", "m": 18, "n": 173}, {"k": "100 a 500 mil", "m": 15, "n": 138}, {"k": "mais de 500 mil", "m": 0, "n": 14}], "partido": [{"k": "AVANTE", "m": 12, "n": 136}, {"k": "MDB", "m": 132, "n": 860}, {"k": "PDT", "m": 14, "n": 151}, {"k": "PL", "m": 61, "n": 517}, {"k": "PODE", "m": 17, "n": 127}, {"k": "PP", "m": 90, "n": 750}, {"k": "PRD", "m": 4, "n": 77}, {"k": "PSB", "m": 51, "n": 311}, {"k": "PSD", "m": 104, "n": 890}, {"k": "PSDB", "m": 32, "n": 275}, {"k": "PT", "m": 41, "n": 252}, {"k": "REPUBLICANOS", "m": 51, "n": 437}, {"k": "SOLIDARIEDADE", "m": 14, "n": 63}, {"k": "UNIÃO", "m": 92, "n": 589}], "grandes": {"m": 15, "n": 152, "top": [{"k": "Campo Grande (MS)", "partido": "PP", "votos": 432811}, {"k": "Contagem (MG)", "partido": "PT", "votos": 310076}, {"k": "Aracaju (SE)", "partido": "PL", "votos": 288766}, {"k": "Juiz de Fora (MG)", "partido": "PT", "votos": 279545}, {"k": "Mogi das Cruzes (SP)", "partido": "PL", "votos": 221751}]}, "perfil": {"superior": {"m": 80.8, "h": 56.3}, "idade": {"m": 49.4, "h": 49.8}, "votos": {"m": 57.9, "h": 58.2}, "reeleicao": {"m": 45.2, "h": 44.3}, "negras": {"m": 33.1, "h": 33.6}}, "eleitorado": {"m": 81806914, "n": 155912680, "data": "12/09/2025"}, "cand": {"m": 2331, "h": 12767, "n": 15098, "munis": 5544}, "sem_candidata": {"m": 3583, "n": 5544}, "sucesso": {"m": 31.5, "h": 37.7}, "sucesso_regiao": [{"k": "Centro-Oeste", "cm": 187, "ch": 1022, "em": 61, "eh": 406, "m": 32.6, "h": 39.7, "pc": 15.5}, {"k": "Nordeste", "cm": 858, "ch": 3659, "em": 332, "eh": 1459, "m": 38.7, "h": 39.9, "pc": 19.0}, {"k": "Norte", "cm": 223, "ch": 1071, "em": 74, "eh": 375, "m": 33.2, "h": 35.0, "pc": 17.2}, {"k": "Sudeste", "cm": 659, "ch": 4274, "em": 152, "eh": 1504, "m": 23.1, "h": 35.2, "pc": 13.4}, {"k": "Sul", "cm": 404, "ch": 2741, "em": 115, "eh": 1075, "m": 28.5, "h": 39.2, "pc": 12.8}], "blocos": {"brasil": [{"k": "Direita", "m": 622, "n": 4802}, {"k": "Esquerda", "m": 112, "n": 751}], "nordeste": [{"k": "Direita", "m": 245, "n": 1335}, {"k": "Esquerda", "m": 87, "n": 456}], "partidos": {"Direita": [{"k": "PSD", "m": 104, "n": 890}, {"k": "MDB", "m": 132, "n": 860}, {"k": "PP", "m": 90, "n": 750}, {"k": "UNIÃO", "m": 92, "n": 589}, {"k": "PL", "m": 61, "n": 517}, {"k": "REPUBLICANOS", "m": 51, "n": 437}, {"k": "PSDB", "m": 32, "n": 275}, {"k": "AVANTE", "m": 12, "n": 136}, {"k": "PODE", "m": 17, "n": 127}, {"k": "PRD", "m": 4, "n": 77}, {"k": "SOLIDARIEDADE", "m": 14, "n": 63}, {"k": "CIDADANIA", "m": 4, "n": 33}, {"k": "MOBILIZA", "m": 3, "n": 21}, {"k": "NOVO", "m": 3, "n": 19}, {"k": "AGIR", "m": 1, "n": 3}, {"k": "DC", "m": 0, "n": 2}, {"k": "PMB", "m": 2, "n": 2}, {"k": "PRTB", "m": 0, "n": 1}], "Esquerda": [{"k": "PSB", "m": 51, "n": 311}, {"k": "PT", "m": 41, "n": 252}, {"k": "PDT", "m": 14, "n": 151}, {"k": "PC do B", "m": 2, "n": 19}, {"k": "PV", "m": 3, "n": 14}, {"k": "REDE", "m": 1, "n": 4}]}}};
 
 const fmt = n => n.toLocaleString("pt-BR");
 const pc = (v, c = 1) => v.toLocaleString("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c }) + "%";
@@ -399,8 +406,9 @@ halteres("g-perfil", [
 ]);
 
 // Blocos: barra empilhada
-const B = D.blocos.brasil, ordem = ["Direita", "Centro", "Esquerda"];
-const corBloco = { Direita: "var(--dir)", Centro: "var(--centro)", Esquerda: "var(--esq)" };
+const B = D.blocos.brasil, ordem = ["Direita", "Esquerda"];
+const corBloco = { Direita: "var(--dir)", Esquerda: "var(--esq)" };
+const nomeBloco = { Direita: "Direita e centro-direita", Esquerda: "Esquerda e centro-esquerda" };
 const totM = D.total.m;
 $("t-734").textContent = fmt(totM);
 const pilha = $("pilha");
@@ -408,14 +416,17 @@ ordem.forEach(k => {
   const b = B.find(x => x.k === k);
   const d = document.createElement("div");
   d.style.flex = b.m; d.style.background = corBloco[k];
-  if (b.m / totM > .2) d.innerHTML = `<span>${k} ${pc(100 * b.m / totM, 0)}</span>`;
-  ligarTip(d, `<b>${k}</b>${fmt(b.m)} prefeitas · ${pc(100 * b.m / totM)} do total`);
+  if (b.m / totM > .2) d.innerHTML = `<span>${nomeBloco[k]} ${pc(100 * b.m / totM, 0)}</span>`;
+  ligarTip(d, `<b>${nomeBloco[k]}</b>${fmt(b.m)} prefeitas · ${pc(100 * b.m / totM)} do total`);
   pilha.appendChild(d);
 });
 $("pilha-leg").innerHTML = ordem.map(k => {
   const b = B.find(x => x.k === k);
-  return `<div><b>${fmt(b.m)}</b><i style="background:${corBloco[k]}"></i>${k} <span class="num">(${pc(100 * b.m / totM)})</span></div>`;
+  return `<div><b>${fmt(b.m)}</b><i style="background:${corBloco[k]}"></i>${nomeBloco[k]} <span class="num">(${pc(100 * b.m / totM)})</span></div>`;
 }).join("");
+$("lados").innerHTML = ordem.map(k => `<div><b><i style="background:${corBloco[k]}"></i>${nomeBloco[k]}</b><p>` +
+  D.blocos.partidos[k].map(r => `${r.k.replace("PC do B", "PC&nbsp;do&nbsp;B")} <span class="num">(${r.m}/${fmt(r.n)})</span>`).join(" · ") + `</p></div>`).join("") +
+  `<p class="nota" style="grid-column:1/-1;margin:0">Entre parênteses: prefeitas / total de prefeituras do partido. Os partidos estão em ordem de número de prefeituras.</p>`;
 
 // Barras horizontais com escala fixa 0–50%
 const ESCALA = 50;
@@ -454,8 +465,8 @@ function barras(alvo, linhas, opc = {}) {
 const desc = a => [...a].sort((x, y) => pm(y) - pm(x));
 ["leg-reg", "leg-bloco"].forEach(legendaRef);
 const linhasBloco = [
-  ...D.blocos.nordeste.map(b => ({ ...b, k: "Nordeste · " + b.k, rotulo: "NE · " + b.k })),
-  ...D.blocos.brasil.map(b => ({ ...b, k: "Brasil · " + b.k, rotulo: "Brasil · " + b.k })),
+  ...D.blocos.nordeste.map(b => ({ ...b, k: "Nordeste · " + nomeBloco[b.k], rotulo: "NE · " + b.k })),
+  ...D.blocos.brasil.map(b => ({ ...b, k: "Brasil · " + nomeBloco[b.k], rotulo: "Brasil · " + b.k })),
 ];
 barras("g-bloco", desc(linhasBloco), { rot: "130px" });
 barras("g-regiao", desc(D.regiao), { rot: "120px" });
